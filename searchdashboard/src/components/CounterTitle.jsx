@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export function CounterTitle() {
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    document.title = `Count: ${count}`;
-  }, [count]);
+  // useEffect(() => {
+  //   document.title = `Count: ${count}`;
+  // }, [count]);
 
   return (
     <div>
