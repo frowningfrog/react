@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-export function SearchBar() {
-  const [inputValue, setInputValue] = useState("");
-
+export function SearchBar({ searchTerm, setSearchTerm }) {
   function handleChange(event) {
-    setInputValue(event.target.value);
+    setSearchTerm(event.target.value);
   }
+  console.log(searchTerm);
 
-  return <input value={inputValue} onChange={handleChange} />;
+  return <input value={searchTerm} onChange={handleChange} />;
 }

@@ -1,15 +1,15 @@
 import React from "react";
-import { MovieList } from "../hooks/hooks";
 
-export function DisplayMovies() {
-  console.log(MovieList);
+export function DisplayMovies({ movies }) {
+  console.log(movies);
   return (
     <ul>
-      {MovieList &&
-        MovieList.map((item) => (
+      {movies &&
+        movies.map((item) => (
           <li key={item.imdbID}>
-            {item.Title}
+            <p>{item.Title}</p>
             <img src={item.Poster} />
+            <p>{item.Year}</p>
           </li>
         ))}
     </ul>
