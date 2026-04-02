@@ -1,18 +1,15 @@
-# React + Vite
+Project Title: Movie Explorer App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Description
+This app searches through a movie database and displays movies based on a search
 
-Currently, two official plugins are available:
+Features
+Input from the user to display list of movies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Reflection Questions
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Data fetching is in a hook because it is capturing outside data, to then use that data for this app.
+2. The useEffect depends on user input.
+3. I handled loading and error states in the hooks file.
+4. Most difficult was getting the user input to change my data and get it to display in the list.
+5. The next improvement I'd take is figuring out how to catch the get error for missing posters from the api.
