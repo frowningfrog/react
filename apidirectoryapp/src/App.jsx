@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { UserList } from "./components/UserList";
 import "./App.css";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <>
-      <h1>greetings programs</h1>
+      <h1>Directory App</h1>
+      <UserList />
     </>
   );
 }
