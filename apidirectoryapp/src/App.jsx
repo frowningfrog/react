@@ -7,12 +7,15 @@ import { DisplayUsers } from "./components/UserList";
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const { users } = useUserList();
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <>
       <h1>Directory App</h1>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <DisplayUsers users={users} />
+      <DisplayUsers users={filteredUsers} searchTerm={searchTerm} />
     </>
   );
 }

@@ -1,18 +1,21 @@
-# React + Vite
+Day 7 - API Directory App
+Description
+This app fetches and loads an searchable list of users
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Contains a search bar to take in user input. A list of users is displayed and can be curated.
 
-Currently, two official plugins are available:
+Why is data fetching considered a side effect?
+Because it should be on its own, not really connected to the dom.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Why do we need a loading state?
+So users don't exit the app if it's slow.
 
-## React Compiler
+Why do we need an error state?
+So it doesn't break our app if something happens.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Why is filtering usually not done with useEffect?
+Because it's going on the dom.
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+What was the hardest part of this project?
+Trying to get the data correctly. Map was getting an error. Somehow fixed it.
