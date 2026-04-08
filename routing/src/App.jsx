@@ -18,7 +18,7 @@ function App() {
         <NavLink to="/about">About</NavLink>
         {isPayingUser && <NavLink to="/dashboard">Dashboard</NavLink>}
       </div>
-      <button onClick={() => setIsPayingUsing(true)}>i am paying</button>
+      <button onClick={() => setIsPayingUsing(true)}>toggle paid user</button>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
