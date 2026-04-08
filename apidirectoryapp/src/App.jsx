@@ -1,14 +1,18 @@
-import { useState, useEffect } from "react";
-import { UserList } from "./components/UserList";
+import { useState } from "react";
+import { SearchBar } from "./components/SearchBar";
 import "./App.css";
+import { useUserList } from "./hooks/hooks";
+import { DisplayUsers } from "./components/UserList";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
+  const { users } = useUserList();
 
   return (
     <>
       <h1>Directory App</h1>
-      <UserList />
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <DisplayUsers users={users} />
     </>
   );
 }
