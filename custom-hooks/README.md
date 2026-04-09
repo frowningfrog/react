@@ -1,18 +1,14 @@
-# React + Vite
+What is a custom hook?
+It handles reusable logic, separate from components that render to the dom.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+How is a custom hook different from a component?
+Components handle rendering to the dom, hooks handle logic and/or data changes.
 
-Currently, two official plugins are available:
+When should you create a custom hook?
+When you need to handle manipulating data separate from the dom.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Which hook did you build that felt most useful?
+The toggle, it looks for a boolean to see if a user is logged in or something, then displays unique data.
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+How did custom hooks improve your code?
+It allows for quick code review, because you're not looking through a whole mess of code to get where you want to go.

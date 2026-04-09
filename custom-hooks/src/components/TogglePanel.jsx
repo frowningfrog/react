@@ -6,9 +6,10 @@ function TogglePanel() {
   return (
     <div>
       <h2>greetings {user ? "users" : "programs"}</h2>
-      <button onClick={handleClick}>{user ? "unverify" : "verify"}</button>
-
-      {user && <p>You're now a verified user.</p>}
+      <div className="same">
+        <button onClick={handleClick}>{user ? "unverify" : "verify"}</button>
+        {user && <p>You're now a verified user.</p>}
+      </div>
     </div>
   );
 }
