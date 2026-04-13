@@ -1,0 +1,19 @@
+.btn {
+  padding: 36px;
+}
+
+ul {
+  gap: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  list-style-type: none;
+  padding: 0;
+}
+
+img {
+  width: 150px;
+}
+
+p {
+  margin: 0;
+}
