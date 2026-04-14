@@ -6,14 +6,18 @@ import { About } from "./pages/About";
 import { Navigation } from "./components/Navigation";
 import { PageNotFound } from "./pages/PageNotFound";
 import { Movies } from "./pages/Movies";
+import { AddReview } from "./pages/AddReview";
+import { MainLayout } from "./layouts/MainLayout";
 
 function App() {
   return (
     <div>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<MainLayout />} />
+        <Route index element={<Home />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/add-review" element={<AddReview />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

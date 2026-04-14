@@ -39,3 +39,33 @@ export function useMovieList(searchTerm) {
 
   return { data, isLoading, error }; // goes to app not a component
 }
+
+export const useMovieDetails = (movieId) => {
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!movieId) return;
+
+    setLoading(true);
+    setError(null);
+
+    fetch(`https://www.omdbapi.com/?apikey=f5a49a4c&i=${movieId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.Response === "True") {
+          setMovie(data);
+        } else {
+          setError(data.Error);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(`Something went wrong: ${err.message}`);
+        setLoading(false);
+      });
+  }, [movieId]);
+
+  return { movie, loading, error };
+};
