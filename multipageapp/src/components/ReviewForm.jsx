@@ -3,15 +3,16 @@ import { useSearchParams } from "react-router-dom";
 import { useMovieDetails } from "../hooks/hooks";
 
 function ReviewForm() {
+  const [data] = useSearchParams();
+  const { movie } = useMovieDetails(data.get("movieid"));
   const [name, setName] = useState("");
   const [movieTitle, setMovieTitle] = useState("");
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [message, setMessage] = useState("");
-  const [data] = useSearchParams();
-  console.log(data.get("movieid"));
-  const { movie } = useMovieDetails(data.get("movieid"));
-  console.log(movie);
+  {
+    movie && console.log(movie.Title);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
