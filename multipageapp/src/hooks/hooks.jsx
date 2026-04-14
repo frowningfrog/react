@@ -48,9 +48,6 @@ export const useMovieDetails = (movieId) => {
   useEffect(() => {
     if (!movieId) return;
 
-    setLoading(true);
-    setError(null);
-
     fetch(`https://www.omdbapi.com/?apikey=f5a49a4c&i=${movieId}`)
       .then((response) => response.json())
       .then((data) => {
