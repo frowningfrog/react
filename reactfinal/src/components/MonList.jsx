@@ -23,7 +23,8 @@ export function DisplayMons({ mons }) {
                 m.name.includes(searchTerm) ||
                 m.pokemontypes[0].type.name.includes(searchTerm),
             ).length
-          }
+          }{" "}
+          Pokemon found!
         </p>
       </div>
       <div className="list">
