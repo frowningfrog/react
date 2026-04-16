@@ -1,17 +1,29 @@
 .box {
-    margin: auto;
+    margin: 0px;
 }
 
 .list {
+    margin: auto;
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+
 }
 
 .card {
     background-color: rgb(61, 230, 173);
-    justify-self: center;
-    margin-bottom: 12px;
+    margin-bottom: 1.5em;
+    width: 32vw;
+    height: 32vw;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.card img {
+    display: block;
+    margin: auto;
+    width: 75%;
 }
 
 .card p {
