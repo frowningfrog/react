@@ -5,17 +5,56 @@ export function MonCard({ mon }) {
   let color = "";
   switch (type) {
     case "grass":
-      color = "lightgreen";
+      color = "green";
       break;
     case "fire":
-      color = "red";
+      color = "orange";
+      break;
+    case "water":
+      color = "blue";
+      break;
+    case "bug":
+      color = "palegreen";
+      break;
+    case "normal":
+      color = "lightgray";
+      break;
+    case "poison":
+      color = "plum";
+      break;
+    case "electric":
+      color = "gold";
+      break;
+    case "ground":
+      color = "peru";
+      break;
+    case "fairy":
+      color = "pink";
+      break;
+    case "fighting":
+      color = "darkred";
+      break;
+    case "psychic":
+      color = "lightpink";
+      break;
+    case "rock":
+      color = "tan";
+      break;
+    case "ghost":
+      color = "rebeccapurple";
+      break;
+    case "ice":
+      color = "lightblue";
+      break;
+    case "dragon":
+      color = "navy";
       break;
   }
   console.log(type);
   return (
-    <div className="card" style={{ backgroundColor: color }}>
+    <button className="card" style={{ backgroundColor: color }}>
       <img src={mon.pokemonsprites[0].sprites} />
       <p>{mon.name[0].toUpperCase() + mon.name.slice(1)}</p>
-    </div>
+    </button>
   );
 }
