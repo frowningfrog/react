@@ -16,7 +16,7 @@ export function DisplayMons({ mons }) {
     <div>
       <div className="flex">
         <input value={searchTerm} onChange={handleChange} />
-        <p>
+        <span>
           {
             pokemon.filter(
               (m) =>
@@ -25,7 +25,7 @@ export function DisplayMons({ mons }) {
             ).length
           }{" "}
           Pokemon found!
-        </p>
+        </span>
       </div>
       <div className="list">
         {pokemon &&

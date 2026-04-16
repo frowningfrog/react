@@ -1,6 +1,7 @@
 .box {
     display: flex;
     justify-content: center;
+    min-width: 350px;
 }
 
 .list {
