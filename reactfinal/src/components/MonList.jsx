@@ -14,8 +14,18 @@ export function DisplayMons({ mons }) {
 
   return (
     <div>
-      <input value={searchTerm} onChange={handleChange} />
-
+      <div className="flex">
+        <input value={searchTerm} onChange={handleChange} />
+        <p>
+          {
+            pokemon.filter(
+              (m) =>
+                m.name.includes(searchTerm) ||
+                m.pokemontypes[0].type.name.includes(searchTerm),
+            ).length
+          }
+        </p>
+      </div>
       <div className="list">
         {pokemon &&
           pokemon
