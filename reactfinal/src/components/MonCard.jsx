@@ -3,6 +3,7 @@ import React from "react";
 export function MonCard({ mon }) {
   const type = mon.pokemontypes[0].type.name;
   let color = "";
+
   switch (type) {
     case "grass":
       color = "green";
@@ -11,7 +12,7 @@ export function MonCard({ mon }) {
       color = "orange";
       break;
     case "water":
-      color = "blue";
+      color = "royalblue";
       break;
     case "bug":
       color = "palegreen";
@@ -47,14 +48,13 @@ export function MonCard({ mon }) {
       color = "lightblue";
       break;
     case "dragon":
-      color = "navy";
+      color = "steelblue";
       break;
   }
-  console.log(type);
   return (
-    <button className="card" style={{ backgroundColor: color }}>
+    <div className="card" style={{ backgroundColor: color }}>
       <img src={mon.pokemonsprites[0].sprites} />
       <p>{mon.name[0].toUpperCase() + mon.name.slice(1)}</p>
-    </button>
+    </div>
   );
 }
