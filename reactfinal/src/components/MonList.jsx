@@ -19,7 +19,11 @@ export function DisplayMons({ mons }) {
       <div className="list">
         {pokemon &&
           pokemon
-            .filter((m) => m.name.includes(searchTerm))
+            .filter(
+              (m) =>
+                m.name.includes(searchTerm) ||
+                m.pokemontypes[0].type.name.includes(searchTerm),
+            )
             .map((m) => <MonCard key={m.name} mon={m} />)}
       </div>
     </div>
