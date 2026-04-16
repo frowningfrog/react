@@ -5,7 +5,7 @@ export function Mons() {
   const { data } = usePokeList();
 
   return (
-    <div>
+    <div className="box">
       <DisplayMons mons={data} />
     </div>
   );

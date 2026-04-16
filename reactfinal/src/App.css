@@ -1,0 +1,21 @@
+.box {
+    margin: auto;
+}
+
+.list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.card {
+    background-color: rgb(61, 230, 173);
+    justify-self: center;
+    margin-bottom: 12px;
+}
+
+.card p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}

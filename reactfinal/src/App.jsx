@@ -1,5 +1,6 @@
 import React from "react";
 import { Mons } from "./pages/Mons";
+import "./App.css";
 
 function App() {
   return (

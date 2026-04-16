@@ -2,8 +2,9 @@ import React from "react";
 
 export function MonCard({ mon }) {
   return (
-    <li>
+    <div className="card">
+      <img src={mon.pokemonsprites[0].sprites} />
       <p>{mon.name}</p>
-    </li>
+    </div>
   );
 }
