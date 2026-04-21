@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 export function MonCard({ mon }) {
   const type = mon.pokemontypes[0].type.name;
@@ -51,10 +51,31 @@ export function MonCard({ mon }) {
       color = "steelblue";
       break;
   }
+
+  const [favs, setFavs] = useState(() => {
+    const saved = localStorage.getItem("name");
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
+
+  function favToggle(m) {
+    if (!favs) {
+      setFavs([m]);
+    } else {
+      setFavs([...favs, m]);
+      console.log(favs);
+    }
+    localStorage.setItem("name", JSON.stringify([...favs, m]));
+  }
+
   return (
     <div className="card" style={{ backgroundColor: color }}>
       <img src={mon.pokemonsprites[0].sprites} />
       <p>{mon.name[0].toUpperCase() + mon.name.slice(1)}</p>
+      <div className="flex">
+        <button onClick={() => favToggle(mon.name)}>Favorite</button>
+        {favs && favs.includes(mon.name) && <span>*</span>}
+      </div>
     </div>
   );
 }
