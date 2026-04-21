@@ -91,8 +91,8 @@ export function MonCard({ mon }) {
       <img src={mon.pokemonsprites[0].sprites} />
       <p>{mon.name[0].toUpperCase() + mon.name.slice(1)}</p>
       <div className="flex">
+        {favs.includes(mon.name) && <span>⭐</span>}
         <button onClick={() => favToggle(mon.name)}>Toggle Favorite</button>
-        {favs.includes(mon.name) && <span>*</span>}
       </div>
     </div>
   );
