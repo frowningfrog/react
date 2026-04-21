@@ -51,17 +51,3 @@ export function usePokeList() {
 
   return { data, isLoading, error };
 }
-
-export function useLocalStorage() {
-  const [name, setName] = useState(() => {
-    const saved = localStorage.getItem("name");
-    const initialValue = JSON.parse(saved);
-    return initialValue || [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("name", JSON.stringify(name));
-  }, [name]);
-
-  return name;
-}

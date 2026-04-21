@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MonCard } from "./MonCard";
+import { PokemonGrid } from "../layouts/PokemonLayout";
 
 export function DisplayMons({ mons }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,9 +15,14 @@ export function DisplayMons({ mons }) {
 
   return (
     <div>
-      <div className="flex">
-        <input value={searchTerm} onChange={handleChange} />
-        <span>
+      <div className="flex items-center gap-4 mb-6 w-full max-w-sm">
+        <input
+          value={searchTerm}
+          onChange={handleChange}
+          placeholder="name or type"
+          className="px-4 py-2 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 w-64"
+        />
+        <p className="text-gray-500 text-sm w-32 shrink-0">
           {
             pokemon.filter(
               (m) =>
@@ -25,9 +31,9 @@ export function DisplayMons({ mons }) {
             ).length
           }{" "}
           Pokemon found!
-        </span>
+        </p>
       </div>
-      <div className="list">
+      <PokemonGrid>
         {pokemon &&
           pokemon
             .filter(
@@ -36,7 +42,7 @@ export function DisplayMons({ mons }) {
                 m.pokemontypes[0].type.name.includes(searchTerm),
             )
             .map((m) => <MonCard key={m.name} mon={m} />)}
-      </div>
+      </PokemonGrid>
     </div>
   );
 }

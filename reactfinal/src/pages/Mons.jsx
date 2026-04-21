@@ -4,9 +4,5 @@ import { usePokeList } from "../hooks/hooks";
 export function Mons() {
   const { data } = usePokeList();
 
-  return (
-    <div className="box">
-      <DisplayMons mons={data} />
-    </div>
-  );
+  return <DisplayMons mons={data} />;
 }

@@ -1,99 +1,76 @@
 import React, { useState } from "react";
+import { getTypeColor } from "../utils/typeColor";
+import { getTeam, saveTeam } from "../utils/team";
 
-// claude wrote this -->
 const getFavs = () => JSON.parse(localStorage.getItem("pokefavs") || "[]");
 const saveFavs = (favs) =>
   localStorage.setItem("pokefavs", JSON.stringify(favs));
 
 export function MonCard({ mon }) {
   const [favs, setFavs] = useState(getFavs); // pass fn reference, not call
+  const [team, setTeam] = useState(getTeam);
+  const [teamFull, setTeamFull] = useState(false);
 
   function favToggle(name) {
     const current = getFavs(); // read fresh from storage
-    const updated = current.includes(name)
+    const isFav = current.includes(name);
+
+    const updated = isFav
       ? current.filter((n) => n !== name) // remove if already fav'd
       : [...current, name]; // add if not
     saveFavs(updated);
     setFavs(updated);
   }
-  // <--
 
-  const type = mon.pokemontypes[0].type.name;
-  let color = "";
-
-  switch (type) {
-    case "grass":
-      color = "green";
-      break;
-    case "fire":
-      color = "orange";
-      break;
-    case "water":
-      color = "royalblue";
-      break;
-    case "bug":
-      color = "palegreen";
-      break;
-    case "normal":
-      color = "lightgray";
-      break;
-    case "poison":
-      color = "plum";
-      break;
-    case "electric":
-      color = "gold";
-      break;
-    case "ground":
-      color = "peru";
-      break;
-    case "fairy":
-      color = "pink";
-      break;
-    case "fighting":
-      color = "darkred";
-      break;
-    case "psychic":
-      color = "lightpink";
-      break;
-    case "rock":
-      color = "tan";
-      break;
-    case "ghost":
-      color = "rebeccapurple";
-      break;
-    case "ice":
-      color = "lightblue";
-      break;
-    case "dragon":
-      color = "steelblue";
-      break;
+  function teamToggle(name) {
+    const current = getTeam();
+    if (current.includes(name)) {
+      const updated = current.filter((n) => n !== name);
+      saveTeam(updated);
+      setTeam(updated);
+      setTeamFull(false);
+    } else {
+      if (current.length >= 6) {
+        setTeamFull(true);
+        return;
+      }
+      const updated = [...current, name];
+      saveTeam(updated);
+      setTeam(updated);
+    }
   }
 
-  // claude had me replace these lines with lines ~3~17
-  // const [favs, setFavs] = useState(() => {
-  //   const saved = localStorage.getItem("name");
-  //   const initialValue = JSON.parse(saved);
-  //   return initialValue || [];
-  // });
-
-  // function favToggle(m) {
-  //   if (!favs) {
-  //     setFavs([m]);
-  //   } else {
-  //     setFavs([...favs, m]);
-  //     console.log(favs);
-  //   }
-  //   localStorage.setItem("name", JSON.stringify([...favs, m]));
-  // }
+  const color = getTypeColor(mon.pokemontypes[0].type.name);
+  const onTeam = team.includes(mon.name);
 
   return (
-    <div className="card" style={{ backgroundColor: color }}>
-      <img src={mon.pokemonsprites[0].sprites} />
-      <p>{mon.name[0].toUpperCase() + mon.name.slice(1)}</p>
-      <div className="flex">
-        {favs.includes(mon.name) && <span>⭐</span>}
-        <button onClick={() => favToggle(mon.name)}>Toggle Favorite</button>
+    <div
+      className={`${color} rounded-2xl border border-black/20 shadow-md m-3 w-52 flex flex-col items-center p-3 gap-1`}
+      style={{ backgroundColor: color }}
+    >
+      <img
+        src={mon.pokemonsprites[0].sprites}
+        className="w-33 h-33 object-contain"
+      />
+
+      <h3 className="font-bold text-lg capitalize">{mon.name}</h3>
+
+      <div className="flex gap-2">
+        <button onClick={() => favToggle(mon.name)}>
+          {favs.includes(mon.name) ? "⭐ Unfav" : "Favorite"}
+        </button>
+        <button
+          onClick={() => teamToggle(mon.name)}
+          disabled={!onTeam && teamFull}
+        >
+          {onTeam ? "Remove Team" : teamFull ? "Team Full" : "Add Team"}
+        </button>
       </div>
+      {teamFull && !onTeam && (
+        <p className="text-red-700 text-xs font-semibold mt-1">
+          Team is full! Remove a pokemon first.
+        </p>
+      )}
     </div>
   );
 }
