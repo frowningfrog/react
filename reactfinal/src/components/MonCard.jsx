@@ -37,10 +37,10 @@ export function MonCard({ mon, favs, team, teamFull, favToggle, teamToggle }) {
       {/* Fav star */}
       <button
         onClick={() => favToggle(mon.name)}
-        className="absolute top-1 right-2 text-base leading-none transition-transform hover:scale-125"
+        className="absolute top-1 right-2 text-xl leading-none transition-transform hover:scale-125"
         title={isFav ? "Unfavorite" : "Favorite"}
       >
-        {isFav ? "FAV ⭐" : "☆"}
+        {isFav ? "⭐" : "☆"}
       </button>
 
       {/* Sprite */}

@@ -67,8 +67,8 @@ function AppShell({ sharedProps }) {
         <Routes>
           <Route element={<PokemonLayout sharedProps={sharedProps} />}>
             <Route path="/" element={<Mons />} />
-            <Route path="/team" element={<Team />} />
             <Route path="/favs" element={<Favs />} />
+            <Route path="/team" element={<Team />} />
           </Route>
         </Routes>
       </div>
