@@ -1,27 +1,28 @@
 import React from "react";
 import { usePokeList } from "../hooks/hooks";
-import { getTypeColor } from "../utils/typeColor";
-import { getTeam, saveTeam } from "../utils/team";
 import { PokemonGrid } from "../layouts/PokemonLayout";
 import { MonCard } from "../components/MonCard";
+import { useSharedProps } from "../layouts/PokemonLayout";
 
 export function Team() {
+  const { team } = useSharedProps();
   const { data, isLoading } = usePokeList();
+  const sharedProps = useSharedProps();
 
   if (isLoading) return <p>Loading...</p>;
 
   const allPokemon = data?.data?.pokemon || [];
-  const team = allPokemon.filter((m) => getTeam().includes(m.name));
+  const teamList = allPokemon.filter((m) => team.includes(m.name));
 
-  if (team.length === 0)
+  if (teamList.length === 0)
     return <p>No pokemon on your team yet! Add some from the browse page.</p>;
 
   return (
     <>
-      <h2>My Team ({team.length}/6)</h2>
+      <h2>My Team ({teamList.length}/6)</h2>
       <PokemonGrid>
-        {team.map((m) => (
-          <MonCard key={m.name} mon={m} />
+        {teamList.map((m) => (
+          <MonCard key={m.name} mon={m} {...sharedProps} />
         ))}
       </PokemonGrid>
     </>
