@@ -3,14 +3,14 @@ import { Outlet, useOutletContext } from "react-router-dom";
 
 export function PokemonLayout({ sharedProps }) {
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
+    <div className="p-4 sm:p-8">
       <Outlet context={sharedProps} />
     </div>
   );
 }
 
 export function PokemonGrid({ children }) {
-  return <div className="flex flex-wrap justify-center">{children}</div>;
+  return <div className="flex flex-wrap justify-center gap-1">{children}</div>;
 }
 
 export function useSharedProps() {

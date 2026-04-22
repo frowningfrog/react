@@ -1,11 +1,80 @@
 import React, { useState } from "react";
 import { Mons } from "./pages/Mons";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { Favs } from "./pages/Favs";
 import { Team } from "./pages/Team";
 import { PokemonLayout } from "./layouts/PokemonLayout";
 import { getFavs, saveFavs } from "./utils/favs";
 import { getTeam, saveTeam } from "./utils/team";
+
+function NavLink({ to, children }) {
+  const location = useLocation();
+  const active = location.pathname === to;
+  return (
+    <Link
+      to={to}
+      className={`px-4 py-2 font-bold uppercase tracking-widest text-sm transition-all duration-150 border-2 border-black
+        ${
+          active
+            ? "bg-yellow-400 text-black shadow-[3px_3px_0px_#000]"
+            : "bg-transparent text-yellow-400 hover:bg-yellow-400 hover:text-black hover:shadow-[3px_3px_0px_#000]"
+        }`}
+    >
+      {children}
+    </Link>
+  );
+}
+
+function AppShell({ sharedProps }) {
+  return (
+    <div
+      className="min-h-screen bg-zinc-950"
+      style={{ fontFamily: "'Press Start 2P', monospace" }}
+    >
+      {/* Scanline overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-50 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, #000 0px, #000 1px, transparent 1px, transparent 4px)",
+        }}
+      />
+
+      {/* Header */}
+      <header className="bg-zinc-900 border-b-4 border-yellow-400 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className="text-yellow-400 text-2xl">💾</span>
+          <h1 className="text-yellow-400 text-sm sm:text-base tracking-wider uppercase">
+            Pokémon
+            <br className="sm:hidden" /> Team Maker
+          </h1>
+        </div>
+        <nav className="flex gap-2 flex-wrap justify-center">
+          <NavLink to="/">Pokédex</NavLink>
+          <NavLink to="/favs">Favorites</NavLink>
+          <NavLink to="/team">My Team</NavLink>
+        </nav>
+      </header>
+
+      {/* Page */}
+      <div>
+        <Routes>
+          <Route element={<PokemonLayout sharedProps={sharedProps} />}>
+            <Route path="/" element={<Mons />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/favs" element={<Favs />} />
+          </Route>
+        </Routes>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const [favs, setFavs] = useState(getFavs);
@@ -40,29 +109,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <h1 className="text-2xl font-bold tracking-wide">Pokemon team maker</h1>
-      <nav className="bg-teal-600 text-white px-6 py-4 flex items-center justify-between shadow-lg">
-        <Link to="/" className="hover:text-yellow-300 transition-colors">
-          Pokemon List
-        </Link>{" "}
-        |{" "}
-        <Link to="/favs" className="hover:text-yellow-300 transition-colors">
-          My Favorites
-        </Link>{" "}
-        |{" "}
-        <Link to="/team" className="hover:text-yellow-300 transition-colors">
-          My Team
-        </Link>
-      </nav>
-      <div>
-        <Routes>
-          <Route element={<PokemonLayout sharedProps={sharedProps} />}>
-            <Route path="/" element={<Mons />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/favs" element={<Favs />} />
-          </Route>
-        </Routes>
-      </div>
+      <AppShell sharedProps={sharedProps} />
     </BrowserRouter>
   );
 }
