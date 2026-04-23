@@ -39,8 +39,8 @@ export function Details() {
               className="w-60 h-60 object-contain"
               style={{ imageRendering: "pixelated" }}
             />
-            <p>Height: {Math.round(m.height * 0.1)}m</p>
-            <p>Weight: {m.weight * 0.1}kg</p>
+            <p>Height: {Math.round(m.height * 0.1 * 100) / 100}m</p>
+            <p>Weight: {Math.round(m.weight * 0.1 * 100) / 100}kg</p>
             {console.log(m.pokemonstats[0])}
             {m.pokemonstats.map((s) => (
               <p key={s.stat.name}>
