@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { getTypeColor } from "../utils/typeColor";
+import { Link } from "react-router-dom";
 
 export function MonCard({ mon, favs, team, teamFull, favToggle, teamToggle }) {
   const typeName = mon.pokemontypes[0].type.name;
@@ -16,6 +17,8 @@ export function MonCard({ mon, favs, team, teamFull, favToggle, teamToggle }) {
       teamToggle(mon.name);
     }
   }
+
+  console.log(mon);
 
   return (
     <div
@@ -45,11 +48,14 @@ export function MonCard({ mon, favs, team, teamFull, favToggle, teamToggle }) {
 
       {/* Sprite */}
       <div className="mt-4 w-30 h-30 flex items-center justify-center bg-black/10 border-2 border-black/20">
-        <img
-          src={mon.pokemonsprites[0].sprites}
-          className="w-45 h-45 object-contain"
-          style={{ imageRendering: "pixelated" }}
-        />
+        <Link to={`/details/${mon.name}`}>
+          <img
+            src={mon.pokemonsprites[0].sprites}
+            alt={mon.name}
+            className="w-45 h-45 object-contain"
+            style={{ imageRendering: "pixelated" }}
+          />
+        </Link>
       </div>
 
       {/* Name */}

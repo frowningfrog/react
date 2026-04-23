@@ -20,8 +20,8 @@ export function Team() {
       </div>
     );
 
-  const allPokemon = data?.data?.pokemon || [];
-  const teamList = allPokemon.filter((m) => team.includes(m.name));
+  const pokemon = data?.data?.pokemon || [];
+  const teamList = pokemon.filter((m) => team.includes(m.name));
 
   if (teamList.length === 0)
     return (

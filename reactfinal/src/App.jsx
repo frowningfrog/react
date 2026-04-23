@@ -12,6 +12,7 @@ import { Team } from "./pages/Team";
 import { PokemonLayout } from "./layouts/PokemonLayout";
 import { getFavs, saveFavs } from "./utils/favs";
 import { getTeam, saveTeam } from "./utils/team";
+import { Details } from "./pages/Details";
 
 function NavLink({ to, children }) {
   const location = useLocation();
@@ -67,6 +68,7 @@ function AppShell({ sharedProps }) {
         <Routes>
           <Route element={<PokemonLayout sharedProps={sharedProps} />}>
             <Route path="/" element={<Mons />} />
+            <Route path="/details/:monName" element={<Details />} />
             <Route path="/favs" element={<Favs />} />
             <Route path="/team" element={<Team />} />
           </Route>

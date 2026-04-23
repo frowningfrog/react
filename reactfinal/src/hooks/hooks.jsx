@@ -12,6 +12,14 @@ query samplePokeAPIquery {
     pokemonsprites {
       sprites(path: "front_default")
     }
+    height
+    weight
+    pokemonstats {
+      base_stat
+      stat {
+        name
+      }
+    }
   }
 }`;
 
