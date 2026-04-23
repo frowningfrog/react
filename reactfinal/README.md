@@ -1,16 +1,17 @@
-# React + Vite
+This project is the final for the React class at Mtech.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This site uses the Pokeapi using graphql to grab pokemon data, the user can then seardh the pokedex, and add pokemon to a favorite list and team lineup.
 
-Currently, two official plugins are available:
+I used Claude ai to create a cool looking ui, and I used it to structure the routing and state management. I tried using it to help with the graphql query but ended up not using what it gave me and figured it out myself.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+links to claude convos:
 
-## React Compiler
+https://claude.ai/share/d8129737-9459-4b7f-ab64-548e15e462db
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://claude.ai/share/2c56a787-4002-4c94-bc00-f44966d3691e
 
-## Expanding the ESLint configuration
+https://claude.ai/share/90e2a63e-c69b-4aca-8192-af7ff80aed7f
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+https://claude.ai/share/d67f10fc-f9aa-46ce-9c64-af7c96fe47ba
+
+https://claude.ai/share/c24495c7-ae19-4bf3-ab61-4f09044130e0
